@@ -1,14 +1,11 @@
- //  
-//    public void move();{
-//
-//    }
-//    public void turnLeft();{
-//        
-//    }
-//    public void turnRight();{
-//        
-//    }
-
+/**
+ * Movable
+ */
+public interface Movable {
+    void move();
+    void turnLeft();
+    void turnRight();
+}
 
 
 

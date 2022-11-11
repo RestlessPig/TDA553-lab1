@@ -1,19 +1,11 @@
 import java.awt.*;
 
 public class Volvo240 extends Supercar {
-
+    
     public final static double trimFactor = 1.25;
 
-    // public Volvo240(){
-    // nrDoors = 4;
-    // color = Color.black;
-    // enginePower = 100;
-    // modelName = "Volvo240";
-    // stopEngine();
-    // }
-
     public Volvo240() {
-        super(4, Color.black, 100, "Volvo240", 0);
+        super(4, Color.black, 100, "Volvo240");
     }
 
     @Override
@@ -21,13 +13,13 @@ public class Volvo240 extends Supercar {
         return getEnginePower() * 0.01 * trimFactor;
     }
 
-    //@Override
-    //public void incrementSpeed(double amount) {
-    //    currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
-    //}
-    //
-    //@Override
-    //public void decrementSpeed(double amount) {
-    //    currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
-    //}
+    @Override
+    public void incrementSpeed(double amount) {
+        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
+    }
+    
+    @Override
+    public void decrementSpeed(double amount) {
+        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
+    }
 }

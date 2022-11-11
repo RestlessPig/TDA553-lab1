@@ -3,7 +3,7 @@ import java.awt.*;
 /**
  * Supercar
  */
-public abstract class Supercar {
+public  abstract class Supercar implements Movable {
 
     private int nrDoors;
     private Color color;
@@ -11,12 +11,11 @@ public abstract class Supercar {
     private String modelName;
     private double currentSpeed;
 
-    public Supercar(int nrDoors, Color color, double enginePower, String modelName, double currentSpeed) {
+    public Supercar(int nrDoors, Color color, double enginePower, String modelName) {
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
         this.modelName = modelName;
-        this.currentSpeed = currentSpeed;
         stopEngine();
     }
 
@@ -30,6 +29,10 @@ public abstract class Supercar {
 
     public double getCurrentSpeed() {
         return currentSpeed;
+    }
+
+    protected void setCurrentSpeed(double setSpeed) {
+        currentSpeed = setSpeed;
     }
 
     public Color getColor() {
@@ -48,17 +51,11 @@ public abstract class Supercar {
         currentSpeed = 0;
     }
 
-    public double speedFactor() {
-        return 0;
-    }
+    public abstract double speedFactor();
 
-    public void incrementSpeed(double amount) {
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
-    }
+    public abstract void incrementSpeed(double amount);
 
-    public void decrementSpeed(double amount) {
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
-    }
+    public abstract void decrementSpeed(double amount);
 
     // TODO fix this method according to lab pm
     public void gas(double amount) {
@@ -68,5 +65,9 @@ public abstract class Supercar {
     // TODO fix this method according to lab pm
     public void brake(double amount) {
         decrementSpeed(amount);
+    }
+
+    public void move(){
+        
     }
 }
