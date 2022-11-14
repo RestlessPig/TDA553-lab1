@@ -35,6 +35,6 @@ public class Saab95 extends Supercar {
         setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
     }
 
-    @
+    
     
 }
