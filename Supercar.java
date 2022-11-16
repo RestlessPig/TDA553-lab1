@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.beans.BeanProperty;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -47,11 +46,7 @@ public abstract class Supercar implements Movable {
 
     protected void setCurrentSpeed(double setSpeed) {
         if (0 <= setSpeed && setSpeed <= enginePower){
-            System.out.println("yes");
             currentSpeed = setSpeed;
-        }
-        else {
-            System.out.println("no");
         }
     }
 
@@ -77,25 +72,15 @@ public abstract class Supercar implements Movable {
 
     public abstract void decrementSpeed(double amount);
 
-    // TODO fix this method according to lab pm
     public void gas(double amount) {
-        if (0 <= amount && amount <= 1){
-            System.out.println("yes");
+        if (0 <= amount && amount <= 1) {
             incrementSpeed(amount);
-        }
-        else {
-            System.out.println("no");
         }
     }
 
-    // TODO fix this method according to lab pm
     public void brake(double amount) {
         if (0 <= amount && amount <= 1){
-            System.out.println("yes");
             decrementSpeed(amount);
-        }
-        else {
-            System.out.println("no");
         }
     }
 
@@ -113,5 +98,4 @@ public abstract class Supercar implements Movable {
     public void turnRight(){
         Collections.rotate(directionWheel, 1);
     }
-
 }
