@@ -45,8 +45,14 @@ public abstract class Supercar implements Movable {
     }
 
     protected void setCurrentSpeed(double setSpeed) {
-        if (0 <= setSpeed && setSpeed <= enginePower){
-            currentSpeed = setSpeed;
+        if (0 <= setSpeed) {
+            if (setSpeed <= enginePower) {
+                currentSpeed = setSpeed;
+            } else {
+                currentSpeed = enginePower;
+            }
+        } else {
+            currentSpeed = 0.0;
         }
     }
 
@@ -75,12 +81,16 @@ public abstract class Supercar implements Movable {
     public void gas(double amount) {
         if (0 <= amount && amount <= 1) {
             incrementSpeed(amount);
+        } else {
+            throw new Error("Gas amount out of range [0,1]");
         }
     }
 
     public void brake(double amount) {
         if (0 <= amount && amount <= 1){
             decrementSpeed(amount);
+        } else {
+            throw new Error("Break amount out of range [0,1]");
         }
     }
 
@@ -88,6 +98,11 @@ public abstract class Supercar implements Movable {
     public void move() {
         x += directionWheel.get(1) * getCurrentSpeed();
         y += directionWheel.get(0) * getCurrentSpeed();
+    }
+
+    public double[] getCarPosition() {
+        double[] pos = new double[] {x,y};
+        return pos;
     }
 
     @Override

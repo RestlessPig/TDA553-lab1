@@ -1,0 +1,39 @@
+Reflection
+
+1. Explain how you chose the inheritance hierarchy in Task 1, making reference to the Open-Closed Principle.
+
+Vi skapade en superklass "Supercar", för bilarna med alla bilarnas delade attribut och metoder. 
+Supercar är en abstrakt klass, och vi valde att göra den abstrakt av anledningen att man inte borde 
+kunna skapa en "bil" utan modellspecifikation. Anledningen till att vi inte valde att implementera 
+Supercar som en Interface är på grund av faktumet att alla bilar behöver ha många av samma attribut. 
+Genom att göra en Superklassen istället för ett Interface behöver vi endast skriva dessa gemensamma 
+attribut på ett enda ställe. Bilarna blir sedan subklasser till Supercar, och ärver metoderna och 
+attributen. Hade vi haft en Interface hade endast metoderna ärvts, och vi hade behövt duplicera alla 
+bilars attribut i subklasserna. Vi vill alltså ha en superklass för att undvika kodduplicering och 
+attributen kan vi då sätta som private för att tillämpa Principle of Least Knowledge. Om dessa sedan 
+behövs i utökning av koden kan getters enkelt skapas, dock vill vi inte dela mer information än nödvändigt. 
+
+De attribut och metoder som är unika för de olika bilarna implementerar vi sedan i respektive subklasser. 
+Vissa metoder har olika implementationer för samtliga bilar, därför gör vi dessa metoder abstrakta i 
+superklassen, för att sedan skapa implementation i subklasserna. För att lägga till en ny biltyp går det 
+enkelt UTAN att modifiera koden vi har, man behöver endast lägga till en subklass. På detta sätt har vi 
+byggt upp koden att följa Open-close-principle. Samma sak gäller för utökning av metoder, det går enkelt 
+att lägga till i "Supercar" och kommer ärvas till samtliga bilar.
+
+
+2. Explain how you implemented each of the sanity checks in Task 4.
+    
+För gas respektive break, testade vi metoderna gas och break med argument med värden utanför 
+intervallet [0,1]. För att motverka att koden accepterar dessa värden, kollar vi om argumentet är 
+utanför intervallet, om detta är fallet, kastar vi ett Error. På detta sätt förhindrar vi även 
+hastighetsökning vid bromsning samt hastighetsminskning vid gasning.
+
+Till sist skulle vi säkerställa att currentSpeed alltid ligger i intervallet [0, enginePower], vi 
+gjorde detta genom att kolla om den nya hastigheten vid hastighetsförändring var utanför 
+intervallet [0, enginePower]. Om hastighetsförändringen hamnar utanför intervallet, sätter vi 
+hastigheten till gränsen på intervallet som hastigheten försökte överskrida. Anledningen till den 
+sistnämnda implementationen är att om vi exempelvis är på hastigheten 0.99 och försöker bromsa in 
+med 1, borde man då hamna på 0, istället för att inte bromsa alls för att det nya värdet ligger 
+utanför intervallet.
+
+
