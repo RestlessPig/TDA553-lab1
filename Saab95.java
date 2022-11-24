@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Saab95 extends Vehicle {
+public class Saab95 extends LoadableVehicle {
 
     private boolean turboOn;
 
@@ -29,12 +29,5 @@ public class Saab95 extends Vehicle {
     public void incrementSpeed(double amount) {
         setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
     }
-
-    @Override
-    public void decrementSpeed(double amount) {
-        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
-    }
-
-    
     
 }

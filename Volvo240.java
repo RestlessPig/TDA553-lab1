@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Volvo240 extends Vehicle {
+public class Volvo240 extends LoadableVehicle {
     
     public final static double trimFactor = 1.25;
 
@@ -16,10 +16,5 @@ public class Volvo240 extends Vehicle {
     @Override
     public void incrementSpeed(double amount) {
         setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
-    }
-    
-    @Override
-    public void decrementSpeed(double amount) {
-        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
     }
 }

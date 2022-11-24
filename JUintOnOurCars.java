@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 public class JUintOnOurCars {
     private Volvo240 car1 = new Volvo240();
+    private Scania strongCar = new Scania();
 
 	@Test
     public void dontGasMoreThanOne() {
@@ -114,6 +115,39 @@ public class JUintOnOurCars {
         car1.move();
         double[] pos4 = car1.getCarPosition();
         assertTrue((pos1[1] != pos2[1] && pos1[0] == pos2[0]) && (pos3[1] == pos4[1] && pos3[0] != pos4[0]));
+    }
+
+    @Test
+    public void scaniaCanNotMoveWhilePlatformIsUp() {
+        strongCar.changePlatformAngle(10);
+        assertThrows(Error.class, () -> {
+            strongCar.gas(1);
+        });
+    }
+
+    @Test
+    public void scaniaPlatformCanNotChangeWhileDriving() {
+        strongCar.changePlatformAngle(0);
+        strongCar.setCurrentSpeed(1);
+        assertThrows(Error.class, () -> {
+            strongCar.changePlatformAngle(10);
+        });
+    }
+
+    @Test
+    public void scaniaPlatformAngleUpperLimit() {
+        strongCar.setCurrentSpeed(0);
+        assertThrows(Error.class, () -> {
+            strongCar.changePlatformAngle(71);
+        });
+    }
+
+    @Test
+    public void scaniaPlatformAngleLowerLimit() {
+        strongCar.setCurrentSpeed(0);
+        assertThrows(Error.class, () -> {
+            strongCar.changePlatformAngle(-1);
+        });
     }
 }
 

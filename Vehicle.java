@@ -5,6 +5,9 @@ import java.util.List;
 
 /**
  * Supercar
+
+    Skapa subklass till vehicle som heter typ smallcar, transporter och scania är subclasser till bigcar eller dyl. Sedan laddar vi 
+    transporter med array av smallcars för att undvika att man kan ladda transporters på transporters på transporters.
  */
 public abstract class Vehicle implements Movable {
 
@@ -68,7 +71,9 @@ public abstract class Vehicle implements Movable {
 
     public abstract void incrementSpeed(double amount);
 
-    public abstract void decrementSpeed(double amount);
+    public void decrementSpeed(double amount) {
+        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
+    }
 
     public void gas(double amount) {
         if (0 <= amount && amount <= 1) {
