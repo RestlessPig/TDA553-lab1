@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Supercar
  */
-public abstract class Supercar implements Movable {
+public abstract class Vehicle implements Movable {
 
     private int nrDoors;
     private Color color;
@@ -17,7 +17,7 @@ public abstract class Supercar implements Movable {
     private double y;
     List<Integer> directionWheel;
 
-    public Supercar(int nrDoors, Color color, double enginePower, String modelName) {
+    public Vehicle(int nrDoors, Color color, double enginePower, String modelName) {
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
@@ -45,15 +45,7 @@ public abstract class Supercar implements Movable {
     }
 
     protected void setCurrentSpeed(double setSpeed) {
-        if (0 <= setSpeed) {
-            if (setSpeed <= enginePower) {
-                currentSpeed = setSpeed;
-            } else {
-                currentSpeed = enginePower;
-            }
-        } else {
-            currentSpeed = 0.0;
-        }
+        currentSpeed = setSpeed;
     }
 
     public Color getColor() {

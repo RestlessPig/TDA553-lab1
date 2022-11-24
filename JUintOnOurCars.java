@@ -4,7 +4,7 @@ import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 public class JUintOnOurCars {
-    private Saab95 car1 = new Saab95();
+    private Volvo240 car1 = new Volvo240();
 
 	@Test
     public void dontGasMoreThanOne() {
