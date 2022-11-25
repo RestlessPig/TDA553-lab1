@@ -3,31 +3,13 @@ import java.awt.Color;
 /**
  * Scania
  */
-public class Scania extends Vehicle {
+public class Scania extends Truck {
 
     private double platformAngle;
 
     public Scania() {
         super(2, Color.pink, 5000000, "Scania1337");
         this.platformAngle = 0;
-    }
-
-    @Override
-    public double speedFactor() {
-        return getEnginePower() * 0.01;
-    }
-
-    @Override
-    public void incrementSpeed(double amount) {
-        incrementSpeedIfSafe(amount);
-    }
-
-    private void incrementSpeedIfSafe(double amount) {
-        if (this.platformAngle == 0) {
-            setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
-        } else {
-            throw new Error("Platform is not lowered, can't do the brumbrum");
-        }
     }
 
     public void changePlatformAngle(double angle) {
@@ -38,11 +20,16 @@ public class Scania extends Vehicle {
         if (getCurrentSpeed() == 0) {
             if (angle <= 70 && angle >= 0) {
                 setPlatformAngle(angle);
+                if (angle == 0) {
+                    this.setRampStandardPosition();
+                } else { 
+                    this.setRampForUse();
+                }
             } else {
                 throw new Error("Platform angle outside safe operating range");
             }
         } else {
-            throw new Error("Can't change platform angle while car is brumbrum'ing");
+            throw new Error("Can't change platform angle while car is moving");
         }
     }
 

@@ -149,6 +149,21 @@ public class JUintOnOurCars {
             strongCar.changePlatformAngle(-1);
         });
     }
+
+    //@Test
+    //public void loadedVehicleFollowsTransporter() {
+    //    t
+    //    t.setCurrentSpeed(5);
+    //    System.out.println(t.getCarPosition()[0]);
+    //    System.out.println(t.getCarPosition()[1]);
+    //    System.out.println(t.flatbed[0].getCarPosition()[0]);
+    //    System.out.println(t.flatbed[0].getCarPosition()[1]);
+    //    t.move();
+    //    System.out.println(t.getCarPosition()[0]);
+    //    System.out.println(t.getCarPosition()[1]);
+    //    System.out.println(t.flatbed[0].getCarPosition()[0]);
+    //    System.out.println(t.flatbed[0].getCarPosition()[1]);
+    //}
 }
 
 

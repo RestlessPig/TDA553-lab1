@@ -102,12 +102,17 @@ public abstract class Vehicle implements Movable {
         return pos;
     }
 
+    protected void setCarPosition(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
     @Override
-    public void turnLeft(){
+    public void turnLeft() {
         Collections.rotate(directionWheel, -1);
     }
     @Override
-    public void turnRight(){
+    public void turnRight() {
         Collections.rotate(directionWheel, 1);
     }
 }
