@@ -16,4 +16,10 @@ public abstract class Car extends Vehicle {
         this.isBeingTransported = !this.isBeingTransported;
     }
    
+   @Override
+    public void move() {
+        if (!isBeingTransported) {
+        super.move();
+        }
+    }
 }

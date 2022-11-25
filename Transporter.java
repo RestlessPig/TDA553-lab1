@@ -7,11 +7,13 @@ import java.util.List;
  */
 public class Transporter extends Truck {
     
-    private List<Car> flatbed;
+    public List<Car> flatbed; //change to private after tests are done
+    private int flatbedCapacity;
 
-    public Transporter(int flatbedSize) {
+    public Transporter(int flatbedCapacity) {
         super(2, Color.black, 500001, "jasonStathamWhoIsTheMainLeadInMovieTransporter");
-        flatbed = new ArrayList<Car>();
+        this.flatbed = new ArrayList<Car>();
+        this.flatbedCapacity = flatbedCapacity;
     }
 
     @Override
@@ -25,33 +27,46 @@ public class Transporter extends Truck {
     }
 
     protected void transportVehicle(Car vehicle) {
-        double[] transporterPosition = this.getCarPosition();
-        vehicle.setCarPosition(transporterPosition[0], transporterPosition[1]);
+        double[] transporterPosition = this.getPosition();
+        System.out.println(transporterPosition[0]);
+        System.out.println(transporterPosition[1]);
+        vehicle.setPosition(transporterPosition[0], transporterPosition[1]);
     }
 
 
-    private void loadVehicle(Car car) {
+    public void loadVehicle(Car car) {
         if (loadVehicleIsSafe(car)) {
             flatbed.add(car);
             car.toggleIsBeingTransported();
         }
     }
 
-    private void unloadVehicle(Car car) {
+    public void unloadVehicle(Car car) {
         if (unloadVehicleIsSafe(car)) {
             flatbed.remove(car);
-            car.toggleIsBeingTransported();
+            placeCarBehindTransporter(car);
         }
-
     }
 
-    //TODO fortsätt här
     private boolean loadVehicleIsSafe(Car car) {
-        return !getRampStandardPositionStatus() && car.getCurrentSpeed() == 0 && Math.abs(getCarPosition()[0] - car.getCarPosition()[0]) < 5 && Math.abs(getCarPosition()[1] - car.getCarPosition()[1]) < 5;
+        return !getRampStandardPositionStatus() && 
+        car.getCurrentSpeed() == 0 && 
+        confirmCarProximity(car) && 
+        flatbed.size() < this.flatbedCapacity;      //current speed of transporter always 0 while ramp not in standard position
     }
 
     private boolean unloadVehicleIsSafe(Car car) {
         return !getRampStandardPositionStatus();
+    }
+
+    private boolean confirmCarProximity(Car car) {
+        return ((Math.abs(getPosition()[0] - car.getPosition()[0]) < 1) && 
+                (Math.abs(getPosition()[1] - car.getPosition()[1]) < 1));
+    }
+
+    private void placeCarBehindTransporter(Car car) {
+        car.toggleIsBeingTransported();
+        car.setPosition((getPosition()[0] - getDirections()[0] * 2), (getPosition()[1] - getDirections()[1] * 2)); //sets car 2 units behind transporter
     }
 
 
@@ -63,3 +78,5 @@ public class Transporter extends Truck {
 
 //Fixa calculate safe distance, sätt i vehicle för framtida kollision etc, OCP
 //Fixa till loadvehicleissafe och unloadvehicleissafe
+
+//TODO Fixa car repair shop med hjälp av delegering (ex loadable), minimera kodduplicering mellan transporter, Scania och car repair shop

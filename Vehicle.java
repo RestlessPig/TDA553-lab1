@@ -18,7 +18,7 @@ public abstract class Vehicle implements Movable {
     private double currentSpeed;
     private double x;
     private double y;
-    List<Integer> directionWheel;
+    private List<Integer> directionWheel;
 
     public Vehicle(int nrDoors, Color color, double enginePower, String modelName) {
         this.nrDoors = nrDoors;
@@ -91,18 +91,22 @@ public abstract class Vehicle implements Movable {
         }
     }
 
-    @Override
-    public void move() {
-        x += directionWheel.get(1) * getCurrentSpeed();
-        y += directionWheel.get(0) * getCurrentSpeed();
+    public int[] getDirections() {
+        return new int[]{directionWheel.get(1),directionWheel.get(0)};
     }
 
-    public double[] getCarPosition() {
+    @Override
+    public void move() {
+        x += getDirections()[0] * getCurrentSpeed();
+        y += getDirections()[1] * getCurrentSpeed();
+    }
+
+    public double[] getPosition() {
         double[] pos = new double[] {x,y};
         return pos;
     }
 
-    protected void setCarPosition(double x, double y) {
+    protected void setPosition(double x, double y) {
         this.x = x;
         this.y = y;
     }

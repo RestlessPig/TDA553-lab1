@@ -95,9 +95,9 @@ public class JUintOnOurCars {
         for (int i = 0; i < 10; i++) {
             car1.gas(1);
         }
-        double[] pos1 = car1.getCarPosition();
+        double[] pos1 = car1.getPosition();
         car1.move();
-        double[] pos2 = car1.getCarPosition();
+        double[] pos2 = car1.getPosition();
         assertTrue(!pos1.equals(pos2));
     }
 
@@ -107,63 +107,16 @@ public class JUintOnOurCars {
         for (int i = 0; i < 10; i++) {
             car1.gas(1);
         }
-        double[] pos1 = car1.getCarPosition();
+        double[] pos1 = car1.getPosition();
         car1.move();
-        double[] pos2 = car1.getCarPosition();
+        double[] pos2 = car1.getPosition();
         car1.turnLeft();
-        double[] pos3 = car1.getCarPosition();
+        double[] pos3 = car1.getPosition();
         car1.move();
-        double[] pos4 = car1.getCarPosition();
+        double[] pos4 = car1.getPosition();
         assertTrue((pos1[1] != pos2[1] && pos1[0] == pos2[0]) && (pos3[1] == pos4[1] && pos3[0] != pos4[0]));
     }
 
-    @Test
-    public void scaniaCanNotMoveWhilePlatformIsUp() {
-        strongCar.changePlatformAngle(10);
-        assertThrows(Error.class, () -> {
-            strongCar.gas(1);
-        });
-    }
-
-    @Test
-    public void scaniaPlatformCanNotChangeWhileDriving() {
-        strongCar.changePlatformAngle(0);
-        strongCar.setCurrentSpeed(1);
-        assertThrows(Error.class, () -> {
-            strongCar.changePlatformAngle(10);
-        });
-    }
-
-    @Test
-    public void scaniaPlatformAngleUpperLimit() {
-        strongCar.setCurrentSpeed(0);
-        assertThrows(Error.class, () -> {
-            strongCar.changePlatformAngle(71);
-        });
-    }
-
-    @Test
-    public void scaniaPlatformAngleLowerLimit() {
-        strongCar.setCurrentSpeed(0);
-        assertThrows(Error.class, () -> {
-            strongCar.changePlatformAngle(-1);
-        });
-    }
-
-    //@Test
-    //public void loadedVehicleFollowsTransporter() {
-    //    t
-    //    t.setCurrentSpeed(5);
-    //    System.out.println(t.getCarPosition()[0]);
-    //    System.out.println(t.getCarPosition()[1]);
-    //    System.out.println(t.flatbed[0].getCarPosition()[0]);
-    //    System.out.println(t.flatbed[0].getCarPosition()[1]);
-    //    t.move();
-    //    System.out.println(t.getCarPosition()[0]);
-    //    System.out.println(t.getCarPosition()[1]);
-    //    System.out.println(t.flatbed[0].getCarPosition()[0]);
-    //    System.out.println(t.flatbed[0].getCarPosition()[1]);
-    //}
 }
 
 
