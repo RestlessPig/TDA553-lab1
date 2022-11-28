@@ -8,7 +8,7 @@ public class Scania extends Truck {
     private double platformAngle;
 
     public Scania() {
-        super(2, Color.pink, 5000000, "Scania1337");
+        super(2, Color.pink, 150, "Scania1337");
         this.platformAngle = 0;
     }
 

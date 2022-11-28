@@ -1,4 +1,6 @@
+
 import org.junit.jupiter.api.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
@@ -20,7 +22,7 @@ public class ScaniaTests {
     @Test
     public void scaniaPlatformCanNotChangeWhileDriving() {
         strongCar.changePlatformAngle(0);
-        strongCar.setCurrentSpeed(1);
+        strongCar.gas(1);
         assertThrows(Error.class, () -> {
             strongCar.changePlatformAngle(10);
         });
@@ -28,7 +30,7 @@ public class ScaniaTests {
 
     @Test
     public void scaniaPlatformAngleUpperLimit() {
-        strongCar.setCurrentSpeed(0);
+        strongCar.brake(1);
         assertThrows(Error.class, () -> {
             strongCar.changePlatformAngle(71);
         });
@@ -36,7 +38,7 @@ public class ScaniaTests {
 
     @Test
     public void scaniaPlatformAngleLowerLimit() {
-        strongCar.setCurrentSpeed(0);
+        strongCar.brake(1);
         assertThrows(Error.class, () -> {
             strongCar.changePlatformAngle(-1);
         });

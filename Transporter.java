@@ -9,9 +9,10 @@ public class Transporter extends Truck {
     
     public List<Car> flatbed; //change to private after tests are done
     private int flatbedCapacity;
+    // TODO private CarLoader flatbed;
 
     public Transporter(int flatbedCapacity) {
-        super(2, Color.black, 500001, "jasonStathamWhoIsTheMainLeadInMovieTransporter");
+        super(2, Color.black, 175, "jasonStathamWhoIsTheMainLeadInMovieTransporter");
         this.flatbed = new ArrayList<Car>();
         this.flatbedCapacity = flatbedCapacity;
     }
@@ -28,8 +29,6 @@ public class Transporter extends Truck {
 
     protected void transportVehicle(Car vehicle) {
         double[] transporterPosition = this.getPosition();
-        System.out.println(transporterPosition[0]);
-        System.out.println(transporterPosition[1]);
         vehicle.setPosition(transporterPosition[0], transporterPosition[1]);
     }
 

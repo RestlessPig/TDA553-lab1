@@ -11,7 +11,7 @@ import java.util.List;
  */
 public abstract class Vehicle implements Movable {
 
-    private int nrDoors;
+    private final int nrDoors;
     private Color color;
     private double enginePower;
     private String modelName;
@@ -47,7 +47,7 @@ public abstract class Vehicle implements Movable {
         return currentSpeed;
     }
 
-    protected void setCurrentSpeed(double setSpeed) {
+    private void setCurrentSpeed(double setSpeed) {
         currentSpeed = setSpeed;
     }
 
@@ -69,10 +69,12 @@ public abstract class Vehicle implements Movable {
 
     public abstract double speedFactor();
 
-    public abstract void incrementSpeed(double amount);
-
-    public void decrementSpeed(double amount) {
+    private void decrementSpeed(double amount) {
         setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
+    }
+
+    private void incrementSpeed(double amount) {
+        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
     }
 
     public void gas(double amount) {
@@ -115,6 +117,7 @@ public abstract class Vehicle implements Movable {
     public void turnLeft() {
         Collections.rotate(directionWheel, -1);
     }
+
     @Override
     public void turnRight() {
         Collections.rotate(directionWheel, 1);

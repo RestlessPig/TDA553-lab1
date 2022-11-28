@@ -17,15 +17,11 @@ public class Truck extends Vehicle {
     }
     
     @Override
-    public void incrementSpeed(double amount) {
-        incrementSpeedIfSafe(amount);
-    }
-
-    private void incrementSpeedIfSafe(double amount) {
+    public void gas(double amount) {
         if (this.rampInStandardPosition) {
-            setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
+            super.gas(amount);
         } else {
-            throw new Error("Ramp is up, can't increase speed");
+            throw new Error("Ramp is not in standard position, can't increase speed");
         }
     }
 
