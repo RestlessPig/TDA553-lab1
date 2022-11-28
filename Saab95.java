@@ -1,40 +1,9 @@
 import java.awt.*;
 
-public class Saab95 extends Supercar {
-
-    private boolean turboOn;
+public class Saab95 extends TurboCar {
 
     public Saab95() {
-        super(2, Color.red, 125, "Saab95");
-        this.turboOn = false;
+        super(2, Color.red, 125, "Saab95", 1.3);
     }
 
-    public void setTurboOn() {
-        turboOn = true;
-    }
-
-    public void setTurboOff() {
-        turboOn = false;
-    }
-
-    @Override
-    public double speedFactor() {
-        double turbo = 1;
-        if (turboOn)
-            turbo = 1.3;
-        return getEnginePower() * 0.01 * turbo;
-    }
-
-    @Override
-    public void incrementSpeed(double amount) {
-        setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
-    }
-
-    @Override
-    public void decrementSpeed(double amount) {
-        setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
-    }
-
-    
-    
 }

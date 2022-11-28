@@ -6,9 +6,9 @@ import java.util.List;
 /**
  * Supercar
  */
-public abstract class Supercar implements Movable {
+public abstract class Vehicle implements Movable {
 
-    private int nrDoors;
+    private final int nrDoors;
     private Color color;
     private double enginePower;
     private String modelName;
@@ -17,7 +17,7 @@ public abstract class Supercar implements Movable {
     private double y;
     List<Integer> directionWheel;
 
-    public Supercar(int nrDoors, Color color, double enginePower, String modelName) {
+    public Vehicle(int nrDoors, Color color, double enginePower, String modelName) {
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
@@ -44,16 +44,8 @@ public abstract class Supercar implements Movable {
         return currentSpeed;
     }
 
-    protected void setCurrentSpeed(double setSpeed) {
-        if (0 <= setSpeed) {
-            if (setSpeed <= enginePower) {
-                currentSpeed = setSpeed;
-            } else {
-                currentSpeed = enginePower;
-            }
-        } else {
-            currentSpeed = 0.0;
-        }
+    private void setCurrentSpeed(double setSpeed) {
+        currentSpeed = setSpeed;
     }
 
     public Color getColor() {
@@ -74,9 +66,13 @@ public abstract class Supercar implements Movable {
 
     public abstract double speedFactor();
 
-    public abstract void incrementSpeed(double amount);
-
-    public abstract void decrementSpeed(double amount);
+    private void incrementSpeed(double amount) {
+        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
+    }
+    
+    private void decrementSpeed(double amount) {
+        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
+    }
 
     public void gas(double amount) {
         if (0 <= amount && amount <= 1) {
@@ -100,7 +96,7 @@ public abstract class Supercar implements Movable {
         y += directionWheel.get(0) * getCurrentSpeed();
     }
 
-    public double[] getCarPosition() {
+    public double[] getPosition() {
         double[] pos = new double[] {x,y};
         return pos;
     }

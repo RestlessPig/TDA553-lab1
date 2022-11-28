@@ -4,7 +4,7 @@ import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 public class JUintOnOurCars {
-    private Saab95 car1 = new Saab95();
+    private Vehicle car1 = new Saab95();
 
 	@Test
     public void dontGasMoreThanOne() {
@@ -71,6 +71,8 @@ public class JUintOnOurCars {
         double firstSpeed = car1.getCurrentSpeed();
         car1.brake(1);
         double secondSpeed = car1.getCurrentSpeed();
+        System.out.println(firstSpeed);
+        System.out.println(secondSpeed);
         assertTrue(firstSpeed > secondSpeed);
     }
 
@@ -94,25 +96,52 @@ public class JUintOnOurCars {
         for (int i = 0; i < 10; i++) {
             car1.gas(1);
         }
-        double[] pos1 = car1.getCarPosition();
+        double[] pos1 = car1.getPosition();
         car1.move();
-        double[] pos2 = car1.getCarPosition();
+        double[] pos2 = car1.getPosition();
         assertTrue(!pos1.equals(pos2));
     }
 
+    @Test //Default orientation is "up" checks if the car has moved in the left direction after turning
+    public void carCanTurnLeft() {
+        car1.startEngine();
+        for (int i = 0; i < 10; i++) {
+            car1.gas(1);
+        }
+        double[] pos1 = car1.getPosition();
+        car1.turnLeft();
+        car1.move();
+        double[] pos2 = car1.getPosition();
+        assertTrue(pos1[1] == 0 && pos2[1] == 0 && pos1[0] > pos2[0]);
+    }
+
+    @Test //Default orientation is "up" checks if the car has moved in the right direction after turning
+    public void carCanTurnRight() {
+        car1.startEngine();
+        for (int i = 0; i < 10; i++) {
+            car1.gas(1);
+        }
+        double[] pos1 = car1.getPosition();
+        car1.turnRight();
+        car1.move();
+        double[] pos2 = car1.getPosition();
+        assertTrue(pos1[1] == 0 && pos2[1] == 0 && pos1[0] < pos2[0]);
+    }
+
+    // might not be needed
     @Test
     public void carOnlyMovesInOneDirection() {
         car1.startEngine();
         for (int i = 0; i < 10; i++) {
             car1.gas(1);
         }
-        double[] pos1 = car1.getCarPosition();
+        double[] pos1 = car1.getPosition();
         car1.move();
-        double[] pos2 = car1.getCarPosition();
+        double[] pos2 = car1.getPosition();
         car1.turnLeft();
-        double[] pos3 = car1.getCarPosition();
+        double[] pos3 = car1.getPosition();
         car1.move();
-        double[] pos4 = car1.getCarPosition();
+        double[] pos4 = car1.getPosition();
         assertTrue((pos1[1] != pos2[1] && pos1[0] == pos2[0]) && (pos3[1] == pos4[1] && pos3[0] != pos4[0]));
     }
 }
