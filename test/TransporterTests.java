@@ -18,7 +18,7 @@ public class TransporterTests {
         transporter.setRampForUse();
         transporter.loadVehicle(volvo);
         transporter.loadVehicle(saab);
-        assertTrue(transporter.flatbed.size() == 1);
+        assertTrue(transporter.flatbed.storage.size() == 1);
     }
     
     @Test

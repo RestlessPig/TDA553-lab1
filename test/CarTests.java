@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
-public class CarsTests {
+public class CarTests {
     private Volvo240 car1 = new Volvo240();
 
 	@Test

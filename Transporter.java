@@ -1,20 +1,15 @@
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Transporter
  */
 public class Transporter extends Truck {
     
-    public List<Car> flatbed; //change to private after tests are done
-    private int flatbedCapacity;
-    // TODO private CarLoader flatbed;
+    public CarLoader flatbed; // TODO public temporärt
 
-    public Transporter(int flatbedCapacity) {
-        super(2, Color.black, 175, "jasonStathamWhoIsTheMainLeadInMovieTransporter");
-        this.flatbed = new ArrayList<Car>();
-        this.flatbedCapacity = flatbedCapacity;
+    public Transporter(int flatbedSlots) {
+        super(2, Color.black, 175, "CarThatTransports");
+        flatbed = new CarLoader(flatbedSlots);
     }
 
     @Override
@@ -22,52 +17,43 @@ public class Transporter extends Truck {
         //x += directionWheel.get(1) * getCurrentSpeed();
         //y += directionWheel.get(0) * getCurrentSpeed();
         super.move();
-        for (Car c: flatbed) {
+        for (Car c: flatbed.storage) {
             this.transportVehicle(c);
         }
     }
 
-    protected void transportVehicle(Car vehicle) {
+    protected void transportVehicle(Car car) {
         double[] transporterPosition = this.getPosition();
-        vehicle.setPosition(transporterPosition[0], transporterPosition[1]);
+        car.setPosition(transporterPosition[0], transporterPosition[1]);
     }
 
-
     public void loadVehicle(Car car) {
-        if (loadVehicleIsSafe(car)) {
-            flatbed.add(car);
-            car.toggleIsBeingTransported();
+        if (ableToLoadVehicle(car)) {
+            flatbed.loadVehicle(car);
         }
     }
 
     public void unloadVehicle(Car car) {
-        if (unloadVehicleIsSafe(car)) {
-            flatbed.remove(car);
-            placeCarBehindTransporter(car);
+        if (ableToUnloadVehicle())  {
+            flatbed.unloadVehicle(car);
         }
     }
 
-    private boolean loadVehicleIsSafe(Car car) {
-        return !getRampStandardPositionStatus() && 
-        car.getCurrentSpeed() == 0 && 
-        confirmCarProximity(car) && 
-        flatbed.size() < this.flatbedCapacity;      //current speed of transporter always 0 while ramp not in standard position
+    private boolean ableToLoadVehicle(Car car) {
+        double[] pos = getPosition();
+        return !getRampStandardPositionStatus() && flatbed.ableToLoadVehicle(car, pos[0], pos[1]);
+        //car.getCurrentSpeed() == 0 && 
+        //confirmCarProximity(car) && 
+        //flatbed.storage.size() < flatbed.carSlots;      //current speed of transporter always 0 while ramp not in standard position
     }
 
-    private boolean unloadVehicleIsSafe(Car car) {
+    private boolean ableToUnloadVehicle() {
         return !getRampStandardPositionStatus();
     }
 
-    private boolean confirmCarProximity(Car car) {
-        return ((Math.abs(getPosition()[0] - car.getPosition()[0]) < 1) && 
-                (Math.abs(getPosition()[1] - car.getPosition()[1]) < 1));
-    }
-
-    private void placeCarBehindTransporter(Car car) {
-        car.toggleIsBeingTransported();
-        car.setPosition((getPosition()[0] - getDirections()[0] * 2), (getPosition()[1] - getDirections()[1] * 2)); //sets car 2 units behind transporter
-    }
-
+    // private void placeCarNearLoader(Car car) { //Delegated to Loadable
+    //      car.setPosition((getPosition()[0] - getDirections()[0] * 2), (getPosition()[1] - getDirections()[1] * 2)); //sets car 2 units behind transporter
+    // }
 
 }
 
@@ -78,4 +64,5 @@ public class Transporter extends Truck {
 //Fixa calculate safe distance, sätt i vehicle för framtida kollision etc, OCP
 //Fixa till loadvehicleissafe och unloadvehicleissafe
 
-//TODO Fixa car repair shop med hjälp av delegering (ex loadable), minimera kodduplicering mellan transporter, Scania och car repair shop
+//TODO Fixa tester, dubbelkolla kodduplicering, dubbelkolla Loadable-implementation samt om den ska kolla avstånd (checkcarproximity etc) 
+//med hjälp av pythagoras, nvm skit i det.

@@ -6,9 +6,11 @@ import java.awt.Color;
 public abstract class TurboCar extends Car {
 
     private boolean turboOn;
+    private double turboStrength;
 
-    TurboCar(int nrDoors, Color color, int enginePower, String modelName) {
+    TurboCar(int nrDoors, Color color, int enginePower, String modelName, double turboStrength) {
         super(nrDoors, color, enginePower, modelName);
+        this.turboStrength = turboStrength;
         turboOn = false;
     }
 
@@ -24,7 +26,7 @@ public abstract class TurboCar extends Car {
     public double speedFactor() {
         double turbo = 1;
         if (turboOn)
-            turbo = 1.3; // TODO kanske borde ändra så att turbo inte är en konstant och kan variera mellan bilar.
+            turbo = turboStrength;
         return getEnginePower() * 0.01 * turbo;
     }
 
