@@ -4,7 +4,7 @@ import java.awt.Color;
  */
 public class TrimCar extends Car {
 
-    private double trimFactor; // Kanske ska vara final, alltså 1.25 för alla trimbilar?
+    private double trimFactor; //can be hypothetically changed in car repair shop
 
     TrimCar(int nrDoors, Color color, int enginePower, String modelName, double trimFactor) {
         super(nrDoors, color, enginePower, modelName);

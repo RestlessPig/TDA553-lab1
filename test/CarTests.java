@@ -48,6 +48,7 @@ public class CarTests {
         double secondSpeed = car1.getCurrentSpeed();
         assertEquals(firstSpeed, secondSpeed, 0.0);
     }
+    
     @Test
     public void gasWithOne() {
         car1.startEngine();
@@ -66,6 +67,7 @@ public class CarTests {
         double secondSpeed = car1.getCurrentSpeed();
         assertEquals(firstSpeed, secondSpeed, 0.0);
     }
+
     @Test
     public void breakWithOne() {
         car1.startEngine();

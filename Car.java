@@ -2,7 +2,9 @@ import java.awt.Color;
 /**
  * SmallCar
  */
-// Kolla med TA om detta är en bra ide eller om man ska få skapa transporterstacks
+// Car is a class that enables the subclasses to be loaded to a CarLoader
+// We made this desicion to prevent Trucks from being loaded onto other Trucks
+// thereby 
 public abstract class Car extends Vehicle {
 
     private boolean isLoaded;
@@ -15,11 +17,17 @@ public abstract class Car extends Vehicle {
     protected void toggleIsLoaded() {
         this.isLoaded = !this.isLoaded;
     }
+
+    protected boolean isLoaded() {
+        return this.isLoaded;
+    }
    
-   @Override
+    @Override
     public void move() {
         if (!isLoaded) {
-        super.move();
+            super.move();
+        } else {
+            throw new Error("Cannot move car on loader");
         }
     }
 }

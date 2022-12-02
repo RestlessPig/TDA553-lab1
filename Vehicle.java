@@ -12,9 +12,9 @@ import java.util.List;
 public abstract class Vehicle implements Movable {
 
     private final int nrDoors;
-    private Color color;
-    private double enginePower;
-    private String modelName;
+    private Color color;                    //can be hypothetically changed in car repair shop
+    private double enginePower;             //can be hypothetically changed in car repair shop
+    private final String modelName;
     private double currentSpeed;
     private double x;
     private double y;

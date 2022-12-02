@@ -6,7 +6,7 @@ import java.awt.Color;
 public abstract class TurboCar extends Car {
 
     private boolean turboOn;
-    private double turboStrength;
+    private double turboStrength;       //can be hypothetically changed in car repair shop
 
     TurboCar(int nrDoors, Color color, int enginePower, String modelName, double turboStrength) {
         super(nrDoors, color, enginePower, modelName);

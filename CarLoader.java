@@ -6,13 +6,17 @@ import java.util.Random;
  */
 public class CarLoader {
 
-    public List<Car> storage; //change to private after tests are done
-    public final int carSlots;
-    public final int safeLoadDistance = 1;
+    private List<Car> storage; 
+    private final int carSlots;
+    private final int safeLoadDistance = 1;
 
     public CarLoader(int carSlots) {
         this.storage = new ArrayList<>();
         this.carSlots = carSlots;
+    }
+
+    public List<Car> getStorage() {
+        return storage;
     }
 
     protected void loadVehicle(Car c) {
@@ -21,8 +25,12 @@ public class CarLoader {
     }
 
     protected void unloadVehicle(Car car) {
-        this.storage.remove(car);
-        car.toggleIsLoaded();
+        boolean carWasOnLoader = this.storage.remove(car); 
+        if (carWasOnLoader) {
+            car.toggleIsLoaded();
+        } else {
+            throw new Error("Cannot unload car which is not currently on loader");
+        }
     }
 
     protected void placeCarNearLoader(Car car) {
@@ -32,30 +40,25 @@ public class CarLoader {
         car.setPosition(currentPosition[0] + offsetX, currentPosition[1] + offsetY);
     }
 
-    private double getRandomOffset() {
+    private double getRandomOffset() { // Calculates a random dropoff point relative to the CarLoaders "Parent"
         Random random = new Random();
         double offset = random.nextDouble();
-        offset *= safeLoadDistance;
-        offset -= (safeLoadDistance / 2.0);
+        offset *= (safeLoadDistance * 2);
+        offset -= safeLoadDistance;
         return offset;
     }
 
     protected boolean ableToLoadVehicle(Car car, double x, double y) { 
-        return car.getCurrentSpeed() == 0 && 
+        return !car.isLoaded() &&
+        car.getCurrentSpeed() == 0 && 
         confirmCarProximity(car, x, y) && 
-        storage.size() < carSlots;      //current speed of transporter always 0 while ramp not in standard position
+        storage.size() < carSlots;
+        //current speed of transporter always 0 while ramp not in standard position
     }
 
-    //TBD if this is necessary here
     private boolean confirmCarProximity(Car car, double x, double y) { 
         return (Math.abs(x - car.getPosition()[0]) < safeLoadDistance) && 
                 (Math.abs(y - car.getPosition()[1]) < safeLoadDistance);
     } 
 
-
-
-// **Eventuell implementation**
-// I transporter kollar vi avstånd transporter - bil
-// I car repair shop kollar vi avstånd shop - bil
-// I loadable laddar vi då på bilen om avtåndet är inom safeLoadDistance
 }

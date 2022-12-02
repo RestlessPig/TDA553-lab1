@@ -4,17 +4,21 @@
 public class CarRepairShop {
 
     private CarLoader carStorage;
-    private double x;
-    private double y;
+    private final double x;
+    private final double y;
 
     public CarRepairShop(double x, double y, int carSlots) {
-        carStorage = new CarLoader(carSlots);
+        this.carStorage = new CarLoader(carSlots);
+        this.x = x;
+        this.y = y;
     }
 
 
     public void loadVehicle(Car car) {
         if (carStorage.ableToLoadVehicle(car, x, y)) {
             carStorage.loadVehicle(car);
+        } else {
+            throw new Error("Cannot load vehicle");
         }
     }
 
@@ -23,11 +27,4 @@ public class CarRepairShop {
         carStorage.placeCarNearLoader(car);
     }
 
-    //private boolean ableToLoadVehicle(Car car) { 
-    //    return car.getCurrentSpeed() == 0 && 
-    //    confirmCarProximity(car) && 
-    //    carStorage.storage.size() < carStorage.carSlots;      //current speed of transporter always 0 while ramp not in standard position
-    //}
-
- 
 }
