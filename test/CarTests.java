@@ -1,10 +1,12 @@
+
 import org.junit.jupiter.api.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
-public class JUintOnOurCars {
-    private Vehicle car1 = new Saab95();
+public class CarTests {
+    private Volvo240 car1 = new Volvo240();
 
 	@Test
     public void dontGasMoreThanOne() {
@@ -46,6 +48,7 @@ public class JUintOnOurCars {
         double secondSpeed = car1.getCurrentSpeed();
         assertEquals(firstSpeed, secondSpeed, 0.0);
     }
+    
     @Test
     public void gasWithOne() {
         car1.startEngine();
@@ -64,6 +67,7 @@ public class JUintOnOurCars {
         double secondSpeed = car1.getCurrentSpeed();
         assertEquals(firstSpeed, secondSpeed, 0.0);
     }
+
     @Test
     public void breakWithOne() {
         car1.startEngine();
@@ -136,14 +140,29 @@ public class JUintOnOurCars {
             car1.gas(1);
         }
         double[] pos1 = car1.getPosition();
+        car1.turnLeft();
         car1.move();
         double[] pos2 = car1.getPosition();
-        car1.turnLeft();
-        double[] pos3 = car1.getPosition();
-        car1.move();
-        double[] pos4 = car1.getPosition();
-        assertTrue((pos1[1] != pos2[1] && pos1[0] == pos2[0]) && (pos3[1] == pos4[1] && pos3[0] != pos4[0]));
+        assertTrue(pos1[1] == 0 && pos2[1] == 0 && pos1[0] > pos2[0]);
     }
+
+    // Not needed
+    //@Test
+    //public void carOnlyMovesInOneDirection() {
+    //    car1.startEngine();
+    //    for (int i = 0; i < 10; i++) {
+    //        car1.gas(1);
+    //    }
+    //    double[] pos1 = car1.getPosition();
+    //    car1.move();
+    //    double[] pos2 = car1.getPosition();
+    //    car1.turnLeft();
+    //    double[] pos3 = car1.getPosition();
+    //    car1.move();
+    //    double[] pos4 = car1.getPosition();
+    //    assertTrue((pos1[1] != pos2[1] && pos1[0] == pos2[0]) && (pos3[1] == pos4[1] && pos3[0] != pos4[0]));
+    //}
+
 }
 
 

@@ -3,7 +3,7 @@ import java.awt.Color;
 /**
  * TrimCar
  */
-public class TrimCar extends Vehicle {
+public class TrimCar extends Car {
 
     private final double trimFactor;
 

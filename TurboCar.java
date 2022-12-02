@@ -3,7 +3,7 @@ import java.awt.Color;
 /**
  * TurboCar
  */
-public abstract class TurboCar extends Vehicle {
+public abstract class TurboCar extends Car {
 
     private boolean turboOn;
     private double turboStrength;

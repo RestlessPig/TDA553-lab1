@@ -5,17 +5,20 @@ import java.util.List;
 
 /**
  * Supercar
+
+    Skapa subklass till vehicle som heter typ smallcar, transporter och scania är subclasser till bigcar eller dyl. Sedan laddar vi 
+    transporter med array av smallcars för att undvika att man kan ladda transporters på transporters på transporters.
  */
 public abstract class Vehicle implements Movable {
 
     private final int nrDoors;
-    private Color color;
-    private double enginePower;
-    private String modelName;
+    private Color color;                    //can be hypothetically changed in car repair shop
+    private double enginePower;             //can be hypothetically changed in car repair shop
+    private final String modelName;
     private double currentSpeed;
     private double x;
     private double y;
-    List<Integer> directionWheel;
+    private List<Integer> directionWheel;
 
     public Vehicle(int nrDoors, Color color, double enginePower, String modelName) {
         this.nrDoors = nrDoors;
@@ -90,10 +93,14 @@ public abstract class Vehicle implements Movable {
         }
     }
 
+    public int[] getDirections() {
+        return new int[]{directionWheel.get(1),directionWheel.get(0)};
+    }
+
     @Override
     public void move() {
-        x += directionWheel.get(1) * getCurrentSpeed();
-        y += directionWheel.get(0) * getCurrentSpeed();
+        x += getDirections()[0] * getCurrentSpeed();
+        y += getDirections()[1] * getCurrentSpeed();
     }
 
     public double[] getPosition() {
@@ -101,12 +108,18 @@ public abstract class Vehicle implements Movable {
         return pos;
     }
 
+    protected void setPosition(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
     @Override
-    public void turnLeft(){
+    public void turnLeft() {
         Collections.rotate(directionWheel, -1);
     }
+
     @Override
-    public void turnRight(){
+    public void turnRight() {
         Collections.rotate(directionWheel, 1);
     }
 }
