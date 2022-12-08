@@ -6,7 +6,7 @@ import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 public class CarTests {
-    private Volvo240 car1 = new Volvo240();
+    private Volvo240 car1 = new Volvo240(0.0,0.0);
 
 	@Test
     public void dontGasMoreThanOne() {

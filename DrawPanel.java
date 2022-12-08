@@ -17,6 +17,7 @@ public class DrawPanel extends JPanel{
     BufferedImage saabImage;
     BufferedImage scaniaImage;
     // To keep track of a singel cars position
+    Point volvoPoint = new Point();
 
     private Dictionary<Object,BufferedImage> imageDictionary = new Hashtable<>();
 

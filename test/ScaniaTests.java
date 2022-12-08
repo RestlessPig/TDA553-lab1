@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThrows;
  */
 public class ScaniaTests {
 
-    Scania strongCar = new Scania();
+    Scania strongCar = new Scania(0.0,0.0);
 
     @Test
     public void scaniaCanNotMoveWhilePlatformIsUp() {

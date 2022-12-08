@@ -28,10 +28,10 @@ public abstract class Vehicle implements Movable {
         this.x = x;
         this.y = y;
         this.directionWheel = new ArrayList<Integer>(4);
+        directionWheel.add(0);
         directionWheel.add(1);
         directionWheel.add(0);
         directionWheel.add(-1);
-        directionWheel.add(0);
         stopEngine();
     }
 

@@ -12,9 +12,9 @@ import static org.junit.Assert.assertThrows;
 public class TransporterTests {
 
     Transporter transporter = new Transporter(1);
-    Car volvo = new Volvo240();
-    Car saab = new Saab95();
-    Car volvo2 = new Volvo240();
+    Car volvo = new Volvo240(0.0,0.0);
+    Car saab = new Saab95(0.0,0.0);
+    Car volvo2 = new Volvo240(0.0,0.0);
     Transporter transporter2 = new Transporter(3);
     
     
