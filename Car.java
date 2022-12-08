@@ -9,8 +9,8 @@ public abstract class Car extends Vehicle {
 
     private boolean isLoaded;
 
-    Car(int nrDoors, Color color, double enginePower, String modelName) {
-        super(nrDoors, color, enginePower, modelName);
+    Car(int nrDoors, Color color, double enginePower, String modelName, double x, double y) {
+        super(nrDoors, color, enginePower, modelName, x, y);
         this.isLoaded = false;
     }
 
