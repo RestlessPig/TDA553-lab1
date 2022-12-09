@@ -13,15 +13,14 @@ import javax.swing.*;
 public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
-    BufferedImage volvoImage;
-    BufferedImage saabImage;
-    BufferedImage scaniaImage;
+    //BufferedImage volvoImage;
+    //BufferedImage saabImage;
+    //BufferedImage scaniaImage;
     // To keep track of a singel cars position
-    Point volvoPoint = new Point();
 
     private Dictionary<Object,BufferedImage> imageDictionary = new Hashtable<>();
 
-    ArrayList<Vehicle> vehicles;
+    private ArrayList<Vehicle> vehicles;
 
     public void updateVehicles(ArrayList<Vehicle> vehicles) {
         this.vehicles = vehicles;
@@ -40,9 +39,12 @@ public class DrawPanel extends JPanel{
 
             // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
-            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
-            saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
-            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+            BufferedImage volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+            BufferedImage saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
+            BufferedImage scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+
+
+            
             imageDictionary.put(Volvo240.class, volvoImage);
             imageDictionary.put(Saab95.class, saabImage);
             imageDictionary.put(Scania.class, scaniaImage);

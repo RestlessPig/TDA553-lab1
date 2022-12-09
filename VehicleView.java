@@ -110,49 +110,7 @@ public class VehicleView extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 vehicleC.gas(gasAmount);
             }
-        }); /*
-        turnLeftButton.addActionListener(new ActionListner() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vehicleC.turnLeft();
-            }
-        });
-        turnRightButton.addActionListener(new ActionListner() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vehicleC.turnRight();          
-            }
-        });           
-        liftBedButton.addActionListener(new ActionListner() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vehicleC.liftBed();          
-            }
-        });
-        brakeButton.addActionListener(new ActionListner() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vehicleC.brake();          
-            }
-        });
-        turboOnButton.addActionListener(new ActionListner() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vehicleC.turboOn();          
-            }
-        });
-        turboOffButton.addActionListener(new ActionListner() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vehicleC.TurboOff();          
-            }
-        });
-        lowerBedButton.addActionListener(new ActionListner() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vehicleC.LowerBed();          
-            }
-        });  */                  
+        });          
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
