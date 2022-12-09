@@ -6,9 +6,8 @@ Kontraktet för gas() respektive brake() säger att sålänge värdet för gas/b
 läge, kommer objektets hastighet inkrementeras eller dekrementeras. Volvo och Scania följer båda dessa kontrakt, relevant är att Volvo
 alltid är i förflyttningsbart läge.
 
-Eftersom att vi inte kan instansiera objekt av olika nivåer i subklasshierarkin, kan vi inte bryta mot Liskov Substitution Principle.
 Eventuellt bryter vi mot denna princip i Transporters move(), då kontraktet i Vehicles move() endast flyttar objektet, medans Transporters
-även drar med sig bilarna på släpet. Kontraktet i detta fall är inte samma mellan klasserna, men vi anser att de i detta fall är 
+även drar med sig bilarna på släpet. Kontraktet i detta fall är inte samma mellan klasserna, men vi anser att det i detta fall är 
 acceptabelt då en transporters jobb är att dra med sig bilarna som står på släpet.
 
 
