@@ -2,8 +2,9 @@
 contract for gas() and brake() in this type? Do the implementations of gas() and brake() in both Volvo and Scania follow this 
 contract? Does your design follow the Liskov Substitution Principle?
 
-Kontraktet för gas() respektive brake() säger att sålänge värdet för gas/brake är accepterat kommer objektets hastighet inkrementeras 
-eller dekrementeras. Både Volvo och Scania använder samma implementation av gas() och brake(), och båda följer därför kontraktet.
+Kontraktet för gas() respektive brake() säger att sålänge värdet för gas/brake är accepterat, och objektet är i ett förflyttningsbart 
+läge, kommer objektets hastighet inkrementeras eller dekrementeras. Volvo och Scania följer båda dessa kontrakt, relevant är att Volvo
+alltid är i förflyttningsbart läge.
 
 Eftersom att vi inte kan instansiera objekt av olika nivåer i subklasshierarkin, kan vi inte bryta mot Liskov Substitution Principle.
 Eventuellt bryter vi mot denna princip i Transporters move(), då kontraktet i Vehicles move() endast flyttar objektet, medans Transporters
