@@ -18,7 +18,7 @@ public abstract class Vehicle implements Movable {
     private double currentSpeed;
     private double x;
     private double y;
-    private List<Integer> directionWheel;
+    private final List<Integer> directionWheel;
 
     public Vehicle(int nrDoors, Color color, double enginePower, String modelName, double x, double y) {
         this.nrDoors = nrDoors;
@@ -34,6 +34,17 @@ public abstract class Vehicle implements Movable {
         directionWheel.add(-1);
         stopEngine();
     }
+
+    // Copy konstruktor ska förmodligen ligga hos de specifika bilarna
+    //public Vehicle(Vehicle v) {
+    //    this.nrDoors = v.nrDoors;
+    //    this.color = v.color;
+    //    this.enginePower = v.enginePower;
+    //    this.modelName = new String(v.modelName);
+    //    this.x = v.x;
+    //    this.y = v.y;
+    //    this.directionWheel = new ArrayList<Integer>(v.directionWheel);
+    //}
 
     public int getNrDoors() {
         return nrDoors;
