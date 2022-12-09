@@ -1,5 +1,10 @@
 import org.junit.jupiter.api.Test;
 
+import model.Car;
+import model.Saab95;
+import model.Transporter;
+import model.Volvo240;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 /**

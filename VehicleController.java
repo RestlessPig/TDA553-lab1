@@ -1,6 +1,11 @@
 import javax.swing.*;
+
+import model.DrawableVehicle;
+import model.DrawableVehicleFactory;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /*
@@ -21,7 +26,7 @@ public class VehicleController {
     // The frame that represents this instance View of the MVC pattern
     VehicleView frame;
     // A list of cars, modify if needed
-    ArrayList<Vehicle> vehicles = new ArrayList<>();
+    ArrayList<DrawableVehicle> vehicles = new ArrayList<>();
 
     //methods:
 
@@ -29,9 +34,13 @@ public class VehicleController {
         // Instance of this class
         VehicleController vc = new VehicleController();
 
-        vc.vehicles.add(new Volvo240(0.0,0.0));
-        vc.vehicles.add(new Saab95(0.0,100.0));
-        vc.vehicles.add(new Scania(0.0,200.0));
+        try {
+            vc.vehicles.add(DrawableVehicleFactory.createDrawableVolvo(0, 0));
+            vc.vehicles.add(DrawableVehicleFactory.createDrawableSaab(0, 100));
+            vc.vehicles.add(DrawableVehicleFactory.createDrawableScania(0, 200));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
         // Start a new view and send a reference of self
         vc.frame = new VehicleView("CarSim 1.0", vc);
@@ -46,9 +55,9 @@ public class VehicleController {
     * view to update its images. Change this method to your needs.
     * */
     private class TimerListener implements ActionListener {
-        private void moveVehicles(ArrayList<Vehicle> vehicles) {
-            for (Vehicle vehicle : vehicles) {
-                vehicle.move();
+        private void moveVehicles(ArrayList<DrawableVehicle> vehicles) {
+            for (DrawableVehicle vehicle : vehicles) {
+                vehicle.getVehicle().move();
             }
         }
 
@@ -77,9 +86,9 @@ public class VehicleController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Vehicle vehicle : vehicles) 
+        for (DrawableVehicle vehicle : vehicles) 
         {
-            vehicle.gas(gas);
+            vehicle.getVehicle().gas(gas);
         }
     }
     /*

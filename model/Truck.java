@@ -1,3 +1,4 @@
+package model;
 import java.awt.Color;
 /**
  * Truck
@@ -25,11 +26,11 @@ public class Truck extends Vehicle {
         }
     }
 
-    protected void setRampForUse() {
+    public void setRampForUse() {
         rampInStandardPosition = false;
     }
 
-    protected void setRampStandardPosition() {
+    public void setRampStandardPosition() {
         rampInStandardPosition = true;
     }
 

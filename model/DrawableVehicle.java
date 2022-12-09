@@ -1,6 +1,7 @@
+package model;
 import java.awt.image.BufferedImage;
 
-public final class DrawableVehicle {
+public class DrawableVehicle {
     
     private final Vehicle vehicle;
     private final BufferedImage image;
@@ -15,7 +16,6 @@ public final class DrawableVehicle {
     }
 
     public Vehicle getVehicle() {
-        //return new Vehicle(this.vehicle);
         return vehicle;
     }
 
