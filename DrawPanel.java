@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.awt.*;
 import javax.swing.*;
 
-import model.DrawableVehicle;
+import VehicleModel.DrawableVehicle;
 
 // This panel represent the animated part of the view with the car images.
 

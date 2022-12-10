@@ -1,4 +1,5 @@
-package model;
+package VehicleModel;
+
 import java.awt.Color;
 /**
  * SmallCar

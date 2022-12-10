@@ -1,9 +1,9 @@
 import org.junit.jupiter.api.Test;
 
-import model.Car;
-import model.Saab95;
-import model.Transporter;
-import model.Volvo240;
+import VehicleModel.Car;
+import VehicleModel.Saab95;
+import VehicleModel.Transporter;
+import VehicleModel.Volvo240;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
