@@ -6,10 +6,9 @@ Kontraktet för gas() respektive brake() säger att sålänge värdet för gas/b
 läge, kommer objektets hastighet inkrementeras eller dekrementeras. Volvo och Scania följer båda dessa kontrakt, relevant är att Volvo
 alltid är i förflyttningsbart läge.
 
-Eventuellt bryter vi mot denna princip i Transporters move(), då kontraktet i Vehicles move() endast flyttar objektet, medans Transporters
-även drar med sig bilarna på släpet. Kontraktet i detta fall är inte samma mellan klasserna, men vi anser att det i detta fall är 
-acceptabelt då en transporters jobb är att dra med sig bilarna som står på släpet.
-
+Kontraktet hos move() metoden säger att om man kallar på metoden och objektet är i ett förflyttningsbart läge så kommer hela objektet
+tillsammans med dess tillhörande delar att flytta på sig. Trots att Transporter även flyttar med sig bilarna som finns i attributet
+CarLoader så följer den kontraktet från Vehicle, då CarLoader med dess bilar räknas som en del av Transportern.
 
 2. How did you handle duplicated code between Scania, the car transporters and the repair shops? Explain how you decided when to 
 use subclassing and when to use composition and delegation.
