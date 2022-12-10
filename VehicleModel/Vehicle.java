@@ -1,4 +1,4 @@
-package VehicleModel;
+package vehiclemodel;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -36,17 +36,6 @@ public abstract class Vehicle implements Movable {
         directionWheel.add(-1);
         stopEngine();
     }
-
-    // Copy konstruktor ska förmodligen ligga hos de specifika bilarna
-    //public Vehicle(Vehicle v) {
-    //    this.nrDoors = v.nrDoors;
-    //    this.color = v.color;
-    //    this.enginePower = v.enginePower;
-    //    this.modelName = new String(v.modelName);
-    //    this.x = v.x;
-    //    this.y = v.y;
-    //    this.directionWheel = new ArrayList<Integer>(v.directionWheel);
-    //}
 
     public int getNrDoors() {
         return nrDoors;

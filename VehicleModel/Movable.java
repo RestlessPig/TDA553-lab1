@@ -1,4 +1,4 @@
-package VehicleModel;
+package vehiclemodel;
 
 /**
  * Movable

@@ -1,6 +1,7 @@
-package VehicleModel;
+package vehiclemodel;
 
 import java.awt.Color;
+
 /**
  * Truck
  */

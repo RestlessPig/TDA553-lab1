@@ -1,7 +1,7 @@
 import javax.swing.*;
 
-import VehicleModel.DrawableVehicle;
-import VehicleModel.DrawableVehicleFactory;
+import vehiclemodel.DrawableVehicle;
+import vehiclemodel.DrawableVehicleFactory;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

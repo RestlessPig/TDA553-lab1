@@ -1,7 +1,7 @@
 
 import org.junit.jupiter.api.Test;
 
-import VehicleModel.Scania;
+import vehiclemodel.Scania;
 
 //import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
