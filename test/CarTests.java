@@ -118,7 +118,7 @@ public class CarTests {
         car1.turnLeft();
         car1.move();
         double[] pos2 = car1.getPosition();
-        assertTrue(pos1[1] == 0 && pos2[1] == 0 && pos1[0] > pos2[0]);
+        assertTrue(pos1[0] == 0 && pos2[0] == 0 && pos1[1] < pos2[1]);
     }
 
     @Test //Default orientation is "up" checks if the car has moved in the right direction after turning
@@ -131,7 +131,7 @@ public class CarTests {
         car1.turnRight();
         car1.move();
         double[] pos2 = car1.getPosition();
-        assertTrue(pos1[1] == 0 && pos2[1] == 0 && pos1[0] < pos2[0]);
+        assertTrue(pos1[0] == 0 && pos2[0] == 0 && pos1[1] > pos2[1]);
     }
 
     // might not be needed
@@ -145,7 +145,7 @@ public class CarTests {
         car1.turnLeft();
         car1.move();
         double[] pos2 = car1.getPosition();
-        assertTrue(pos1[1] == 0 && pos2[1] == 0 && pos1[0] > pos2[0]);
+        assertTrue(pos1[0] == 0 && pos2[0] == 0 && pos1[1] < pos2[1]);
     }
 
     // Not needed
