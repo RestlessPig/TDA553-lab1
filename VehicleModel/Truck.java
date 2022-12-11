@@ -1,4 +1,7 @@
+package vehiclemodel;
+
 import java.awt.Color;
+
 /**
  * Truck
  */
@@ -6,8 +9,8 @@ public class Truck extends Vehicle {
 
     private boolean rampInStandardPosition;
 
-    Truck(int nrDoors, Color color, double enginePower, String modelName) {
-        super(nrDoors, color, enginePower, modelName);
+    Truck(int nrDoors, Color color, double enginePower, String modelName, double x, double y) {
+        super(nrDoors, color, enginePower, modelName, x, y);
         this.rampInStandardPosition = true;
     }
 
@@ -25,11 +28,11 @@ public class Truck extends Vehicle {
         }
     }
 
-    protected void setRampForUse() {
+    public void setRampForUse() {
         rampInStandardPosition = false;
     }
 
-    protected void setRampStandardPosition() {
+    public void setRampStandardPosition() {
         rampInStandardPosition = true;
     }
 

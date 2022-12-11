@@ -1,3 +1,5 @@
+package vehiclemodel;
+
 import java.awt.Color;
 
 /**
@@ -7,8 +9,8 @@ public class Scania extends Truck {
 
     private double platformAngle;
 
-    public Scania() {
-        super(2, Color.pink, 150, "Scania1337");
+    public Scania(double x, double y) {
+        super(2, Color.pink, 150, "Scania1337", x, y);
         this.platformAngle = 0;
     }
 

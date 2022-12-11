@@ -1,6 +1,8 @@
 
 import org.junit.jupiter.api.Test;
 
+import vehiclemodel.Scania;
+
 //import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 //import static org.junit.Assert.assertTrue;
@@ -9,7 +11,7 @@ import static org.junit.Assert.assertThrows;
  */
 public class ScaniaTests {
 
-    Scania strongCar = new Scania();
+    Scania strongCar = new Scania(0.0,0.0);
 
     @Test
     public void scaniaCanNotMoveWhilePlatformIsUp() {

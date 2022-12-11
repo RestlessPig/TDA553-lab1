@@ -1,3 +1,5 @@
+package vehiclemodel;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,20 +20,20 @@ public abstract class Vehicle implements Movable {
     private double currentSpeed;
     private double x;
     private double y;
-    private List<Integer> directionWheel;
+    private final List<Integer> directionWheel;
 
-    public Vehicle(int nrDoors, Color color, double enginePower, String modelName) {
+    public Vehicle(int nrDoors, Color color, double enginePower, String modelName, double x, double y) {
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
         this.modelName = modelName;
-        this.x = 0;
-        this.y = 0;
+        this.x = x;
+        this.y = y;
         this.directionWheel = new ArrayList<Integer>(4);
+        directionWheel.add(0);
         directionWheel.add(1);
         directionWheel.add(0);
         directionWheel.add(-1);
-        directionWheel.add(0);
         stopEngine();
     }
 

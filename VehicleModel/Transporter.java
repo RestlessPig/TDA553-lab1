@@ -1,3 +1,5 @@
+package vehiclemodel;
+
 import java.awt.Color;
 
 /**
@@ -8,7 +10,7 @@ public class Transporter extends Truck {
     private CarLoader flatbed;
 
     public Transporter(int flatbedSlots) {
-        super(2, Color.black, 175, "CarThatTransports");
+        super(2, Color.black, 175, "CarThatTransports", 0, 0);
         flatbed = new CarLoader(flatbedSlots);
         
     }

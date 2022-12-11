@@ -1,3 +1,5 @@
+package vehiclemodel;
+
 import java.awt.Color;
 
 /**
@@ -7,8 +9,8 @@ public class TrimCar extends Car {
 
     private final double trimFactor;
 
-    public TrimCar(int nrDoors, Color color, double enginePower, String modelName, double trimFactor) {
-        super(nrDoors, color, enginePower, modelName);
+    public TrimCar(int nrDoors, Color color, int enginePower, String modelName, double trimFactor, double x, double y) {
+        super(nrDoors, color, enginePower, modelName, x, y);
         this.trimFactor = trimFactor;
     }
 
