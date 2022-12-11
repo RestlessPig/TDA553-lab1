@@ -1,4 +1,4 @@
-package vehiclemodel;
+package vehicleModel;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;

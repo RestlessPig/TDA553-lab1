@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import vehiclemodel.DrawableVehicle;
+import vehicleModel.DrawableVehicle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;

@@ -1,4 +1,4 @@
-import vehiclemodel.*;
+import vehicleModel.*;
 import java.io.IOException;
 
 public class VehicleApp {
