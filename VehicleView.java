@@ -4,6 +4,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -13,12 +14,14 @@ import java.awt.event.ActionListener;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class VehicleView extends JFrame{
+public class VehicleView extends JFrame implements Observer{
     private static final int X = 1000;
     private static final int Y = 800;
 
     // The controller member
-    VehicleController vehicleC;
+    VehicleModel vehicleM;
+
+    private ArrayList<Observer> observers;
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
@@ -42,10 +45,27 @@ public class VehicleView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public VehicleView(String framename, VehicleController cc){
-        this.vehicleC = cc;
+    public VehicleView(String framename, VehicleModel vm) {
+        this.vehicleM = vm;
+        observers = new ArrayList<>();
         initComponents(framename);
     }
+
+    public void updateVehicles() {
+        drawPanel.updateVehicles(vehicleM.getVehicles());
+    }
+
+    public void addObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void updateObserver() {
+        updateVehicles();
+        drawPanel.repaint();
+    }
+
+    
 
     // Sets everything in place and fits everything
     // TODO: Take a good look and make sure you understand how these methods and components work
@@ -54,10 +74,7 @@ public class VehicleView extends JFrame{
         this.setTitle(title);
         this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
-
         this.add(drawPanel);
-
-
 
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
@@ -108,7 +125,9 @@ public class VehicleView extends JFrame{
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vehicleC.gas(gasAmount);
+                for (Observer observer : observers) {
+                    observer.updateObserver();
+                }
             }
         });          
         // Make the frame pack all it's components by respecting the sizes if possible.

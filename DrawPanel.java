@@ -9,7 +9,7 @@ import vehiclemodel.DrawableVehicle;
 public class DrawPanel extends JPanel{
 
     private ArrayList<DrawableVehicle> drawableVehicles;
-
+    
     public void updateVehicles(ArrayList<DrawableVehicle> vehicles) {
         this.drawableVehicles = vehicles;
     }
