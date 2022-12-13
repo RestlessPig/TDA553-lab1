@@ -26,7 +26,7 @@ public class VehicleView extends JFrame implements Observer{
     DrawPanel drawPanel;
 
     // --------------------------------------- SHOULD BE IN VEHICLECONTROLLER
-    //JPanel controlPanel = new JPanel();
+    JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();
     JSpinner gasSpinner = new JSpinner();
