@@ -15,9 +15,9 @@ public class VehicleController implements Observer {
     //private Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
-    VehicleView view;
+    private VehicleView view;
 
-    VehicleModel model;
+    private VehicleModel model;
 
     //methods:
 

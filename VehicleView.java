@@ -19,13 +19,14 @@ public class VehicleView extends JFrame implements Observer{
     private static final int Y = 800;
 
     // The controller member
-    VehicleModel vehicleM;
+    private VehicleModel vehicleM;
 
     private ArrayList<Observer> observers;
 
-    DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    DrawPanel drawPanel;
 
-    JPanel controlPanel = new JPanel();
+    // --------------------------------------- SHOULD BE IN VEHICLECONTROLLER
+    //JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();
     JSpinner gasSpinner = new JSpinner();
@@ -43,10 +44,12 @@ public class VehicleView extends JFrame implements Observer{
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
+    // -----------------------------------------
 
     // Constructor
     public VehicleView(String framename, VehicleModel vm) {
         this.vehicleM = vm;
+        this.drawPanel = new DrawPanel(X, Y-240);
         observers = new ArrayList<>();
         initComponents(framename);
     }
