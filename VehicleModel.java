@@ -42,12 +42,20 @@ public class VehicleModel {
         }     
     }
 
-    void gas(int amount) {
+    protected void gas(int amount) {
         double gas = ((double) amount) / 100;
-            for (DrawableVehicle vehicle : drawableVehicles) 
-            {
-                vehicle.getVehicle().gas(gas);
-            }
+        for (DrawableVehicle vehicle : drawableVehicles) 
+        {
+            vehicle.getVehicle().gas(gas);
+        }
+    }
+
+    protected void brake(int amount) {
+        double brake = ((double)amount) / 100;
+        for (DrawableVehicle vehicle : drawableVehicles) 
+        {
+            vehicle.getVehicle().brake(brake);;
+        }
     }
 
     protected ArrayList<DrawableVehicle> getVehicles() {

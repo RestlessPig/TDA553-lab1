@@ -20,4 +20,8 @@ public class DrawableVehicle {
         return vehicle;
     }
 
+    public double[] getVehiclePos() {
+        return this.vehicle.getPosition();
+    }
+
 }

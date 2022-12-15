@@ -3,7 +3,6 @@ import java.awt.*;
 import javax.swing.*;
 
 import vehicleModel.DrawableVehicle;
-import vehicleModel.Vehicle;
 
 // This panel represent the animated part of the view with the car images.
 
@@ -29,8 +28,9 @@ public class DrawPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (DrawableVehicle vehicle : drawableVehicles) {
-            Vehicle internalVehicle = vehicle.getVehicle();
-            double[] vehiclePos = internalVehicle.getPosition();
+            //Vehicle internalVehicle = vehicle.getVehicle();
+            //double[] vehiclePos = internalVehicle.getPosition();
+            double[] vehiclePos = vehicle.getVehiclePos();
             g.drawImage(vehicle.getImage(), (int)vehiclePos[0], (int)vehiclePos[1], null); // see javadoc for more info on the parameters   
         }
     }

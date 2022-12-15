@@ -15,11 +15,11 @@ public class VehicleApp {
             ex.printStackTrace();
         }
 
-        VehicleView vv = new VehicleView("CarSim 1.0", vm);
+        VehicleController vc = new VehicleController(vm);
 
-        VehicleController vc = new VehicleController(vm,vv);
+        VehicleView vv = new VehicleView("CarSim 1.0", vm, vc);
 
-        vv.addObserver(vc);
+        //vv.addObserver(vc);
         vm.addObserver(vv);
 
     }
